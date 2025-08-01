@@ -8,12 +8,14 @@ body {
   text-align: center;
 }
 }
-
 canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Keeps it behind everything */
+}
 }
 
 .container {
@@ -63,4 +65,11 @@ h1 {
 
 .gift-button:hover {
   transform: scale(1.05);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
 }
