@@ -1,38 +1,73 @@
+// Setup canvas
 const canvas = document.getElementById("rainCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const drops = Array(200)
-  .fill()
-  .map(() => ({
+// Resize canvas on window resize
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// 🌧️ Raindrop particles
+const rainDrops = [];
+for (let i = 0; i < 200; i++) {
+  rainDrops.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    l: Math.random() * 1,
-    ys: 4 + Math.random() * 3,
-  }));
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = "rgba(255,255,255,0.2)";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  drops.forEach((d) => {
-    ctx.moveTo(d.x, d.y);
-    ctx.lineTo(d.x, d.y + d.l * d.ys);
+    length: Math.random() * 20 + 10,
+    speed: Math.random() * 4 + 2,
+    opacity: Math.random() * 0.5 + 0.3,
   });
-  ctx.stroke();
-  move();
 }
 
-function move() {
-  drops.forEach((d) => {
-    d.y += d.ys;
-    if (d.y > canvas.height) {
-      d.y = -20;
-      d.x = Math.random() * canvas.width;
+// 💖 Floating hearts
+const hearts = [];
+for (let i = 0; i < 50; i++) {
+  hearts.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 12 + 8,
+    speed: Math.random() * 1.5 + 0.5,
+  });
+}
+
+// 🎨 Draw everything
+function drawScene() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw rain
+  ctx.strokeStyle = "rgba(255,255,255,0.3)";
+  ctx.lineWidth = 1.5;
+  rainDrops.forEach((drop) => {
+    ctx.beginPath();
+    ctx.moveTo(drop.x, drop.y);
+    ctx.lineTo(drop.x, drop.y + drop.length);
+    ctx.stroke();
+
+    drop.y += drop.speed;
+    if (drop.y > canvas.height) {
+      drop.y = -20;
+      drop.x = Math.random() * canvas.width;
     }
   });
+
+  // Draw hearts
+  hearts.forEach((h) => {
+    ctx.font = `${h.size}px Arial`;
+    ctx.fillStyle = "rgba(255,105,180,0.7)";
+    ctx.fillText("♥", h.x, h.y);
+
+    h.y -= h.speed;
+    if (h.y < -20) {
+      h.y = canvas.height + 20;
+      h.x = Math.random() * canvas.width;
+    }
+  });
+
+  requestAnimationFrame(drawScene);
 }
 
-setInterval(draw, 30);
+drawScene();
+
