@@ -2,55 +2,219 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Sawan Surprise for Angad Bangad</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sawan Love</title>
+    <style>
+      /* Reset and base styles */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(to bottom right, #ffccd5, #ffdde1);
+        overflow: hidden;
+      }
+
+      /* Canvas stays behind everything */
+      canvas#rainCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+        background: transparent;
+      }
+
+      /* Main container pinned to top */
+      .container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 800px;
+        padding: 40px 20px;
+        text-align: center;
+        z-index: 1;
+      }
+
+      h1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+        color: #fff;
+        text-shadow: 0 0 10px #ff80ab;
+      }
+
+      .message {
+        font-size: 1.3em;
+        margin-bottom: 30px;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        border-radius: 10px;
+        backdrop-filter: blur(4px);
+        color: #fff;
+      }
+
+      .hindi {
+        font-size: 1.2em;
+        font-family: "Noto Sans Devanagari", sans-serif;
+        color: #ffe6f0;
+        margin-top: 10px;
+        display: block;
+      }
+
+      .playlist {
+        margin-bottom: 30px;
+      }
+
+      .playlist h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #fff;
+        text-shadow: 0 0 8px #ff80ab;
+      }
+
+      .playlist-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 10px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 0 12px rgba(255, 128, 171, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .gift-button {
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        font-size: 1.1em;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 0 12px #ff80ab;
+        transition: transform 0.3s ease;
+      }
+
+      .gift-button:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8em;
+        }
+
+        .message {
+          font-size: 1.1em;
+        }
+
+        .gift-button {
+          font-size: 1em;
+          padding: 12px 20px;
+        }
+      }
+    </style>
   </head>
   <body>
     <canvas id="rainCanvas"></canvas>
 
-    <!-- Rain ambient sound -->
-    <audio autoplay loop>
-      <source
-        src="https://cdn.pixabay.com/audio/2022/08/04/audio_11212c2db3.mp3"
-        type="audio/mpeg"
-      />
-    </audio>
-
-    <!-- Romantic Hindi track -->
-    <audio autoplay loop>
-      <source
-        src="https://cdn.pixabay.com/audio/2023/03/01/audio_5f36a6d7fa.mp3"
-        type="audio/mpeg"
-      />
-    </audio>
-
     <div class="container">
-      <h1>💌 A SAWAN Special Love Note for Angad Bangad</h1>
+      <h1>Angad Bangad My Love 💖</h1>
       <p class="message">
-        Wishing you gentle drops and endless smiles this Sawan 💖<br /><span
-          class="hindi"
-          >हर बूंद में है मेरा प्यार...</span
-        >
+        Even the monsoon can't match the magic you bring into my life.
+        <span class="hindi">सावन की हर बूँद मुझे तुम्हारी याद दिलाती है।</span>
       </p>
 
       <div class="playlist">
-        <h3>🎶  Monsoon Playlist</h3>
-        <iframe
-          style="border-radius: 12px"
-          src="https://open.spotify.com/embed/album/6mJytsdl9dFVzg4gAznTrd?utm_source=generator"
-          width="300"
-          height="380"
-          frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media;"
-          allowfullscreen
-        ></iframe>
+        <h2>Our Sawan Playlist 🎶</h2>
+        <div class="playlist-card">
+          <iframe
+            style="border-radius: 12px"
+            src="https://embed.spotify.com/playlist/3xteAaWDBppQewR2uXhVdC?si=3c07ae73763042f9"
+            width="100%"
+            height="152"
+            frameborder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          >
+          </iframe>
+        </div>
       </div>
 
-      <button class="gift-button" onclick="window.location.href='gift.html'">
-        🎁  Sawan Gift
-      </button>
-    </div>
+     <!-- ✅ Button that opens gift.html in a new tab -->
+  <button class="gift-button" onclick="openGift()"> Angad Bangad 🎁</button>
 
-    <script src="script.js"></script>
+  <script>
+    function openGift() {
+      window.open('gift.html', '_blank');
+    }
+  </script>
+
+
+    <script>
+      const canvas = document.getElementById("rainCanvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      const hearts = [];
+      const heartCount = 50;
+
+      function createHeart() {
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 20 + 10,
+          speed: Math.random() * 2 + 1,
+          opacity: Math.random() * 0.5 + 0.5,
+        };
+      }
+
+      for (let i = 0; i < heartCount; i++) {
+        hearts.push(createHeart());
+      }
+
+      function drawHeart(x, y, size, opacity) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(size / 30, size / 30);
+        ctx.beginPath();
+        ctx.globalAlpha = opacity;
+        ctx.fillStyle = "#ff80ab";
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(0, -3, -5, -3, -5, 0);
+        ctx.bezierCurveTo(-5, 3, 0, 6, 0, 9);
+        ctx.bezierCurveTo(0, 6, 5, 3, 5, 0);
+        ctx.bezierCurveTo(5, -3, 0, -3, 0, 0);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hearts.forEach((h) => {
+          drawHeart(h.x, h.y, h.size, h.opacity);
+          h.y += h.speed;
+          if (h.y > canvas.height) {
+            h.y = -10;
+            h.x = Math.random() * canvas.width;
+          }
+        });
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    </script>
   </body>
 </html>
+
