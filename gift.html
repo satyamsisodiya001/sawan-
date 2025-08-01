@@ -2,52 +2,138 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Your Sawan Surprise</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Your Sawan Gift</title>
+    <style>
+      body {
+        background: radial-gradient(circle, #ffe4e1, #ffb6c1);
+        font-family: "Segoe UI", sans-serif;
+        text-align: center;
+        padding: 40px;
+      }
+
+      h1 {
+        color: #d6336c;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      <div
+        class="photo-gallery"
+        > <div
+        class="photo-card"
+        > <img
+        src="images/her1.jpg"
+        alt="Her Smile"
+        /
+        > <p
+        class="caption"
+        > Her
+        Smile
+        💖</p
+        > </div
+        > <div
+        class="photo-card"
+        > <img
+        src="images/her2.jpg"
+        alt="Her Laugh"
+        /
+        > <p
+        class="caption"
+        > Her
+        Laugh
+        🌸</p
+        > </div
+        > <div
+        class="photo-card"
+        > <img
+        src="images/her3.jpg"
+        alt="Her Eyes"
+        /
+        > <p
+        class="caption"
+        > Her
+        Eyes
+        ✨</p
+        > </div
+        > </div
+        > .photo-gallery
+        img:hover {
+        transform: scale(1.05);
+      }
+      <head>
+  <title>Gift Page</title>
+  <style>
+    /* Paste your CSS here */
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .photo-card {
+      width: 200px;
+      aspect-ratio: 3 / 4;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(255, 128, 171, 0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.05);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      flex-grow: 1;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 1em;
+      color: #d6336c;
+      background: rgba(255, 255, 255, 0.8);
+      width: 100%;
+      text-align: center;
+      font-weight: 500;
+    }
+  </style>
+</head>
+    </style>
   </head>
   <body>
-    <canvas id="rainCanvas"></canvas>
+    <h1>💖 Your Sawan Surprise 💖</h1>
 
-    <!-- Rain and music same as main -->
-    <audio autoplay loop>
-      <source
-        src="https://cdn.pixabay.com/audio/2022/08/04/audio_11212c2db3.mp3"
-        type="audio/mpeg"
-      />
-    </audio>
-    <audio autoplay loop>
-      <source
-        src="https://cdn.pixabay.com/audio/2023/03/01/audio_5f36a6d7fa.mp3"
-        type="audio/mpeg"
-      />
-    </audio>
-
-    <div class="container">
-      <h1>🎁 Your Gift, Bangad 💝</h1>
-      <p class="message">
-        From Angad — a little sparkle to match the season 🌸
-      </p>
-
-      <img
-        src="https://i.ibb.co/k3GdCNp/green-bangles.jpg"
-        alt="Green Bangles"
-        style="
-          max-width: 280px;
-          border-radius: 10px;
-          box-shadow: 0 0 15px #00ffd0;
-        "
-      />
-
-      <p class="message">
-        Order ID: <strong>#SAWAN786</strong><br />
-        Delivery Status: 🚚 Out for delivery – arriving soon!
-      </p>
-
-      <button onclick="window.location.href='index.html'" class="gift-button">
-        ⬅ Back to Main Page
-      </button>
+    <div class="photo-gallery">
+      <div class="photo-card">
+        <img src="https://drive.google.com/thumbnail?id=1P98q_xlsquOf1jRLvwEgt-qeoMLiuHIF&sz=w400" alt="Her Smile 💖" />
+        <p class="caption">Her Smile 💖</p>
+      </div>
+    
+      <div class="photo-card">
+        <img src="https://drive.google.com/thumbnail?id=1Xp3gDm_PLlMew2yEyl6NqmgjcK1acJ6_&sz=w400" alt="Her Laugh 🌸" />
+        <p class="caption">Her Laugh 🌸</p>
+      </div>
+    
+      <div class="photo-card">
+        <img src="https://drive.google.com/thumbnail?id=1wCUg1lUKrta2mwUvOrX1fZ3u_aSvvXm_&sz=w400" alt="Her Eyes ✨" />
+        <p class="caption">Her Eyes ✨</p>
+      </div>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
